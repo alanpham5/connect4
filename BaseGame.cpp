@@ -15,15 +15,6 @@ BaseGame::BaseGame()
     }
 }
 
-/*BaseGame::BaseGame(const BaseGame game)
-{
-    gameBoard = game.gameBoard;
-    colCapacity = game.colCapacity;
-    turn = game.turn;
-    
-}
-*/
-
 int BaseGame::whoseTurn()
 {
     return turn;
