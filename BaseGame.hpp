@@ -10,7 +10,6 @@ class BaseGame
 {
 public:
     BaseGame();
-//    BaseGame(const BaseGame game);
     int whoseTurn();
     void changeTurn();
     void addPiece();
