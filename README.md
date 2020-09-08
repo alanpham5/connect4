@@ -2,7 +2,7 @@
 
 ## Overview
 
-This connect4 game is a small project I am doing to refresh my memory with C++.
+This connect4 game is a small self-started project to refresh my memory about C++.
 This is still a work in progress.
 
 ## Files
