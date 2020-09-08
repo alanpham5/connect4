@@ -2,8 +2,10 @@
 
 ## Overview
 
-This connect4 game is a small self-started project to refresh my memory about C++.
-This is still a work in progress.
+Connect4 is a game where each player takes turns dropping their pieces into 7 columns of 6 spots.
+This project is a self-started project intended to refresh myself about C++ and for self-leisure.
+
+*This is still a work in progress.*
 
 ## Files
 
