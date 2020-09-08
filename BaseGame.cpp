@@ -35,6 +35,9 @@ void BaseGame::addPiece()
     
     std::cout << "Choose column to insert piece (1-7) or quit (0): ";
     std::cin >> colNumber;
+    
+    if (colNumber == 0)
+        exit(0);
 
     bool isFull = (colFillLevel[colNumber-1] > 5);
     
