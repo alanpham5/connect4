@@ -16,11 +16,11 @@ displaying the gameboard, scorekeeping (not implemented yet), and a variety of o
 
 ## Future Directions and Expected Changes
 
-**Scorekeeping**
+**Scorekeeping:**
 The game engine will be able to keep track of which player wins and which 4 pieces of the game are connected.
 
-**AI opponents**
+**AI opponents:**
 A variety of artificial players with varying playing strategies will be implemented.
 
-**Graphical User Interface?**
+**Graphical User Interface?:**
 Depending on whether new projects come to mind or not, a graphical user interface *may* be implemented.
