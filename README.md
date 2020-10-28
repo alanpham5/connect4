@@ -25,7 +25,7 @@ or diagonally.
 
 **AI opponents:**
 A variety of artificial players with varying playing strategies will be implemented.<br/>
-Potential Strategies:<br/> MiniMax (depth-first based)<br/> Monte Carlo (random sampling)<br/> Random move (for "easy mode")<br/>
+Potential Strategies:<br/> - MiniMax (depth-first based)<br/> - Monte Carlo (random sampling)<br/> - Random move (for "easy mode")<br/>
 
 **Graphical User Interface?:**
 Depending on whether new projects come to mind or not, a graphical user interface *may* be implemented.
