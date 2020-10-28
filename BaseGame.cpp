@@ -35,7 +35,7 @@ void BaseGame::addPiece()
     
     std::cout << "Choose column to insert piece (1-7) or quit (0): ";
     std::cin >> colNumber;
-    
+
     if (colNumber == 0)
         exit(0);
 
@@ -51,14 +51,28 @@ void BaseGame::addPiece()
 
     gameBoard[colNumber-1][colFillLevel[colNumber-1]] = turn;
 
-    colFillLevel[colNumber-1]++;
-    
-    changeTurn();
+    if (!checkWinner(colNumber - 1, colFillLevel[colNumber-1])){
+        colFillLevel[colNumber-1]++;
+        changeTurn();
+    }
 }
 
 bool BaseGame::isFinished()
 {
     return finished;
+}
+int BaseGame::checkWinner(int col, int row)
+{
+    if (checker.isHorizontallyConnected(gameBoard, col, row)
+        or checker.isVerticallyConnected(gameBoard, col, row)
+        or checker.isDiagonallyConnected(gameBoard, col, row)){
+        
+        finished = true;
+        return whoseTurn();
+    }
+
+    return 0;
+    
 }
 
 void BaseGame::printBoard()
