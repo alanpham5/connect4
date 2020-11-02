@@ -1,8 +1,9 @@
 # connect4
 
 ## Overview
-
-Connect4 is a game where each player takes turns dropping their pieces into 7 columns of 6 spots.<br/>
+Normal Rules: each player takes turns dropping their pieces into 7 columns of 6 spots.<br/>
+Player with 4 of their pieces in a row wins.<br/>
+<br/>
 This project is a self-started project intended to refresh myself about C++ and for self-leisure.<br/>
 
 *This is still a work in progress.*
