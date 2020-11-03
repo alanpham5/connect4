@@ -23,7 +23,7 @@ vertically, horizontally, or diagonally.
 
 
 **MonteCarlo.cpp/MonteCarlo.hpp:**
-MonteCarlo generates moves given a game state using the Monte Carlo Tree Search algorithm.
+MonteCarlo automates the actions of a player, given a game state, by using the Monte Carlo Tree Search algorithm.
 
 
 ## Future Directions and Expected Changes
