@@ -6,8 +6,6 @@ Player with 4 of their pieces in a row wins.<br/>
 <br/>
 This project is a self-started project intended to refresh myself about C++ and for self-leisure.<br/>
 
-*This is still a work in progress.*
-
 ## Files
 
 **main.cpp:** 
