@@ -25,14 +25,18 @@ vertically, horizontally, or diagonally.
 **MonteCarlo.cpp/MonteCarlo.hpp:**
 MonteCarlo automates the actions of a player, given a game state, by using the Monte Carlo Tree Search algorithm.
 
+**MiniMax.cpp/MiniMax.hpp:**
+MiniMax automates the actions of a player, given a game state, by using the MiniMax algorithm.
+
 
 ## Future Directions and Expected Changes
 
 **More AI opponents:**
 A variety of artificial players with varying playing strategies will be implemented.<br/>
 Potential Strategies:<br/> 
-  - MiniMax (depth-first based)<br/> 
   - Random move (for "easy mode")<br/>
+  - MiniMax with Pruning<br/>
+  - MiniMax with a variety of other hueristics and depths
 
 **Graphical User Interface?:**
 Depending on whether new projects come to mind or not, a graphical user interface *may* be implemented.
