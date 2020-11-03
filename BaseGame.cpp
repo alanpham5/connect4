@@ -5,7 +5,7 @@
 #include <vector>
 
 BaseGame::BaseGame()
-    :turn{1}, finished{false}
+:turn{1}, finished{false}, winner{0}
 {
 // Create 2-d Vec, 1's turn
     for (int i = 0; i < 7; i++)
@@ -13,6 +13,17 @@ BaseGame::BaseGame()
         gameBoard.push_back({0,0,0,0,0,0});
         colFillLevel[i] =  0;
     }
+}
+
+BaseGame::BaseGame(int sTurn, bool sFinished, std::vector<std::vector<int>> sGameBoard, std::map<int,int> sCollFillLevel, int sWinner)
+:turn{sTurn}, finished{sFinished}, gameBoard{sGameBoard}, colFillLevel{sCollFillLevel}, winner{sWinner}
+{
+}
+
+BaseGame BaseGame::cloneGame() const
+{
+    BaseGame clone(turn, finished, gameBoard, colFillLevel, winner);
+    return clone;
 }
 
 int BaseGame::whoseTurn()
@@ -29,50 +40,57 @@ void BaseGame::changeTurn()
         turn = 1;
 }
 
-void BaseGame::addPiece()
+void BaseGame::addPiece(int colNumber)
 {
-    int colNumber;
-    
-    std::cout << "Choose column to insert piece (1-7) or quit (0): ";
-    std::cin >> colNumber;
+    if(!isColumnFull(colNumber)){
+        //std::cout<<colNumber<<std::endl;
+        //std::cout<<colFillLevel[colNumber]<<std::endl;
+        
+        gameBoard[colNumber][colFillLevel[colNumber]] = turn;
 
-    if (colNumber == 0)
-        exit(0);
-
-    bool isFull = (colFillLevel[colNumber-1] > 5);
-    
-    while(isFull)
-    {
-        std::cout << "Column full, please pick another column (1-7) or quit (0): ";
-        std::cin >> colNumber;
-
-        isFull = (colFillLevel[colNumber-1] > 6);
-    }
-
-    gameBoard[colNumber-1][colFillLevel[colNumber-1]] = turn;
-
-    if (!checkWinner(colNumber - 1, colFillLevel[colNumber-1])){
-        colFillLevel[colNumber-1]++;
-        changeTurn();
+        if (!checkWinner(colNumber , colFillLevel[colNumber])){
+            colFillLevel[colNumber]++;
+            changeTurn();
+        }
     }
 }
 
+bool BaseGame::isColumnFull(int colNumber){
+    
+    if (colFillLevel[colNumber] > 5){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 bool BaseGame::isFinished()
 {
-    return finished;
+    bool filled = true;
+    for(int i = 0; i < 7; i++){
+        if(!isColumnFull(i)){
+            filled = false;
+        }
+    }
+    
+    return (filled or finished);
 }
-int BaseGame::checkWinner(int col, int row)
+bool BaseGame::checkWinner(int col, int row)
 {
     if (checker.isHorizontallyConnected(gameBoard, col, row)
         or checker.isVerticallyConnected(gameBoard, col, row)
         or checker.isDiagonallyConnected(gameBoard, col, row)){
         
         finished = true;
-        return whoseTurn();
+        winner = turn;
+        return true;
     }
 
-    return 0;
+    return false;
     
+}
+int BaseGame::getWinner(){
+    return winner;
 }
 
 void BaseGame::printBoard()

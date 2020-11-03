@@ -12,8 +12,9 @@ bool ScoreKeeper::isVerticallyConnected
     }
     else
     {
-        return (board[column][row] == board[column][row-1]
-            == board[column][row-2] == board[column][row-3]);
+        return (board[column][row] == board[column][row-1] and
+                board[column][row]== board[column][row-2] and
+                board[column][row]== board[column][row-3]);
     }
 }
 
@@ -61,89 +62,55 @@ bool ScoreKeeper::isDiagonallyConnected
 {
     int playertype = board[column][row];
 
-    int uLbR = 1;
-    int bLuR = 1;
+    int uLbR = 0;
+    int bLuR = 0;
 
 // Upper Left -> Bottom Right
     int coltemp = column;
     int rowtemp = row;
-
-    while (coltemp > 0 and rowtemp < 5 and uLbR < 4)
-    {
-        coltemp--;
+    
+    while (coltemp > 0 and rowtemp < 5){
         rowtemp++;
+        coltemp--;
+    }
 
-
+    while (uLbR < 4 and coltemp <= 6 and rowtemp >= 0)
+    {
         if (board[coltemp][rowtemp] == playertype)
         {
             uLbR++;
         }
         else
         {
-            break;
+            uLbR = 0;
         }
-    }
-
-    coltemp = column;
-    rowtemp = row;
-
-
-    while (coltemp < 6 and rowtemp > 0 and uLbR < 4)
-    {
         coltemp++;
         rowtemp--;
-
-
-        if (board[coltemp][rowtemp] == playertype)
-        {
-            uLbR++;
-        }
-        else
-        {
-            break;
-        }
     }
+
 
 // Bottom Left -> Upper Right 
 
     coltemp = column;
     rowtemp = row;
 
-    while (coltemp > 0 and row > 0 and bLuR < 4)
+    while (coltemp < 6 and rowtemp < 5){
+        rowtemp++;
+        coltemp++;
+    }
+
+    while (bLuR < 4 and coltemp >= 0 and rowtemp >= 5)
     {
+        if (board[coltemp][rowtemp] == playertype)
+        {
+            bLuR++;
+        }
+        else
+        {
+            bLuR = 0;
+        }
         coltemp--;
         rowtemp--;
-
-
-        if (board[coltemp][rowtemp] == playertype)
-        {
-            bLuR++;
-        }
-        else
-        {
-            break;
-        }
     }
-
-    coltemp = column;
-    rowtemp = row;
-
-
-    while (coltemp < 6 and rowtemp < 5 and bLuR < 4)
-    {
-        coltemp++;
-        rowtemp++;
-
-
-        if (board[coltemp][rowtemp] == playertype)
-        {
-            bLuR++;
-        }
-        else
-        {
-            break;
-        }
-    }
-
     return (uLbR > 3 or bLuR > 3);
 }
