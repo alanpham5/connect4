@@ -1,6 +1,7 @@
 // main.cpp
 #include "BaseGame.hpp"
 #include "MonteCarlo.hpp"
+#include "MiniMax.hpp"
 #include <iostream>
 
 int genUserMove(BaseGame newGame){
@@ -25,6 +26,7 @@ int main()
 {
     // Creating AI objects
     MonteCarlo mcBot;
+    MiniMax maxwell;
     
     BaseGame newGame;
     int colNumber = 0;
@@ -43,19 +45,28 @@ int main()
     std::string player1Mode;
     std::string player2Mode;
     
+    std::cout << "Player Index"<<std::endl;
+    std::cout << "==================="<<std::endl;
+    std::cout << "Human       ---> type 'h'"<<std::endl;
+    std::cout << "Bot Level 1 ---> type '1'"<<std::endl;
+    std::cout << "Bot Level 2 ---> type '2'"<<std::endl;
+    std::cout << "==================="<<std::endl;
+    std::cout<<std::endl;
     do{
-        std::cout << "Select player 1 mode - human (h) or Robot 1 (1): ";
+        std::cout << "Select player 1 mode: ";
         std::cin >> player1Mode;
-    }while(player1Mode != "h" and player1Mode != "1");
+    }while(player1Mode != "h" and player1Mode != "1" and player1Mode != "2");
 
     do{
-        std::cout << "Select player 2 mode - human (h) or Robot 1 (1): ";
+        std::cout << "Select player 2 mode: ";
         std::cin >> player2Mode;
-    }while(player2Mode != "h" and player2Mode != "1");
+    }while(player2Mode != "h" and player2Mode != "1" and player2Mode != "2");
+
     
     
     while (!newGame.isFinished())
     {
+        std::cout<<std::endl;
         newGame.printBoard();
         switch(newGame.whoseTurn()){
             case 1:
@@ -74,6 +85,9 @@ int main()
             else if (player1Mode == "1"){
                 colNumber = mcBot.chooseMove(newGame);
             }
+            else if (player1Mode == "2"){
+                colNumber = maxwell.chooseMove(newGame);
+            }
         }
         else{
             if(player2Mode == "h"){
@@ -81,6 +95,9 @@ int main()
             }
             else if (player2Mode == "1"){
                 colNumber = mcBot.chooseMove(newGame);
+            }
+            else if (player2Mode == "2"){
+                colNumber = maxwell.chooseMove(newGame);
             }
         }
         if (colNumber > -1 and colNumber < 7){
@@ -92,6 +109,7 @@ int main()
             }
         }
     }
+    std::cout<<std::endl;
     newGame.printBoard();
 
     std::cout<<turnCharacter<<" won the game!"<<std::endl;

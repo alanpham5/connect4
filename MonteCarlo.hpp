@@ -9,6 +9,7 @@ class MonteCarlo {
     public:
         int chooseMove(const BaseGame game);
         float genScore(int row, BaseGame game);    
+
 };
 
 

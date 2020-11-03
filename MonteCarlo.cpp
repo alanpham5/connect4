@@ -1,6 +1,5 @@
 //  MonteCarlo.cpp
 
-
 #include "MonteCarlo.hpp"
 #include "BaseGame.hpp"
 #include <vector>
@@ -11,12 +10,25 @@ int MonteCarlo::chooseMove(const BaseGame game){
     int maxEval = -99999;
     int move = 0;
     
+    std::random_device device;
+    std::default_random_engine engine{device()};
+    std::uniform_int_distribution<int> distribution{0, 1};
+    
     for (int i = 0; i < 7; i++){
         if (!clone.isColumnFull(i)){
             float score = genScore(i, clone);
-            if (score >= maxEval){
+            if (score > maxEval){
                 move = i;
                 maxEval = score;
+            }
+            // Reduces inevitable right skew
+            else if (score == maxEval){
+                int flip = distribution(engine);
+                if (flip == 1){
+                    move = i;
+                    maxEval = score;
+                }
+                
             }
         }
         

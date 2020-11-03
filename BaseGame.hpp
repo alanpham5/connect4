@@ -20,6 +20,7 @@ public:
     bool isFinished();
     bool checkWinner(int col, int row);
     int getWinner();
+    std::vector<std::vector<int>> getGameBoard();
     void printBoard();
 
 private:

@@ -93,6 +93,10 @@ int BaseGame::getWinner(){
     return winner;
 }
 
+std::vector<std::vector<int>> BaseGame::getGameBoard(){
+    return gameBoard;
+}
+
 void BaseGame::printBoard()
 {
     int coordinate;
