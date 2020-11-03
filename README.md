@@ -16,8 +16,8 @@ This is where the game engine lives. The BaseGame class is in charge of maintain
 displaying the gameboard, and determining if a player has won.
 
 **ScoreKeeper.cpp/ScoreKeeper.hpp:**
-ScoreKeeper holds the functions that determine if 4 identical pieces have been connected <br/>
-vertically, horizontally, or diagonally.
+ScoreKeeper holds the functions that determine if 4 identical pieces have been <br/>
+connected vertically, horizontally, or diagonally.
 
 
 **MonteCarlo.cpp/MonteCarlo.hpp:**
