@@ -2,6 +2,8 @@
 #include "BaseGame.hpp"
 #include "MonteCarlo.hpp"
 #include "MiniMax.hpp"
+#include "MiniMaxLite.hpp"
+#include "RandomAI.hpp"
 #include <iostream>
 
 int genUserMove(BaseGame newGame){
@@ -27,6 +29,8 @@ int main()
     // Creating AI objects
     MonteCarlo mcBot;
     MiniMax maxwell;
+    MiniMaxLite maxJr;
+    RandomAI rando;
     
     BaseGame newGame;
     int colNumber = 0;
@@ -48,19 +52,30 @@ int main()
     std::cout << "Player Index"<<std::endl;
     std::cout << "==================="<<std::endl;
     std::cout << "Human       ---> type 'h'"<<std::endl;
-    std::cout << "Bot Level 1 ---> type '1'"<<std::endl;
-    std::cout << "Bot Level 2 ---> type '2'"<<std::endl;
+    std::cout << "Bot Level 1 (Random Move)       ---> type '1'"<<std::endl;
+    std::cout << "Bot Level 2 (Simple MCTS)       ---> type '2'"<<std::endl;
+    std::cout << "Bot Level 3 (MiniMax Full)      ---> type '3'"<<std::endl;
+    std::cout << "Bot Level 4 (MMLite w/ Pruning) ---> type '4'"<<std::endl;
     std::cout << "==================="<<std::endl;
     std::cout<<std::endl;
     do{
         std::cout << "Select player 1 mode: ";
         std::cin >> player1Mode;
-    }while(player1Mode != "h" and player1Mode != "1" and player1Mode != "2");
+    }while(player1Mode != "h"
+           and player1Mode != "1"
+           and player1Mode != "2"
+           and player1Mode != "3"
+           and player1Mode != "4");
 
     do{
         std::cout << "Select player 2 mode: ";
         std::cin >> player2Mode;
-    }while(player2Mode != "h" and player2Mode != "1" and player2Mode != "2");
+    }while(player2Mode != "h"
+           and player2Mode != "1"
+           and player2Mode != "2"
+           and player2Mode != "3"
+           and player2Mode != "4");
+
 
     
     
@@ -83,21 +98,39 @@ int main()
                 colNumber = genUserMove(newGame);
             }
             else if (player1Mode == "1"){
-                colNumber = mcBot.chooseMove(newGame);
+                colNumber = rando.chooseMove(newGame);
+                
             }
             else if (player1Mode == "2"){
+                colNumber = mcBot.chooseMove(newGame);
+                
+            }
+            else if (player1Mode == "3"){
                 colNumber = maxwell.chooseMove(newGame);
             }
+            else if (player1Mode == "4"){
+                colNumber = maxJr.chooseMove(newGame);
+            }
+            
         }
         else{
             if(player2Mode == "h"){
                 colNumber = genUserMove(newGame);
             }
             else if (player2Mode == "1"){
-                colNumber = mcBot.chooseMove(newGame);
+                colNumber = rando.chooseMove(newGame);
+                
             }
             else if (player2Mode == "2"){
+                colNumber = mcBot.chooseMove(newGame);
+                
+            }
+            else if (player2Mode == "3"){
                 colNumber = maxwell.chooseMove(newGame);
+                
+            }
+            else if (player2Mode == "4"){
+                colNumber = maxJr.chooseMove(newGame);
             }
         }
         if (colNumber > -1 and colNumber < 7){

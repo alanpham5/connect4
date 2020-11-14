@@ -60,10 +60,10 @@ int MiniMax::chooseMove(const BaseGame game){
 int MiniMax::search(BaseGame game, int depth){
     if(game.isFinished()){
         if(game.getWinner() == 1){
-            return -999;
+            return -9999;
         }
         else{
-            return 999;
+            return 9999;
         }
     }
     if (depth == 0){
