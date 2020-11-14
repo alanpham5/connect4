@@ -4,7 +4,7 @@
 Normal Rules: each player takes turns dropping their pieces into 7 columns of 6 spots.<br/>
 Player with 4 of their pieces in a row wins.<br/>
 <br/>
-To play: Run the main executable file.
+To play: Run the Connect4 executable file.
 <br/>
 ## Classes
 
